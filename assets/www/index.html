@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0;" />
+	<meta charset="utf-8">
+	<script type="text/javascript" charset="utf-8" src="cordova-2.5.0.js"></script>
+	<link rel="stylesheet" href="css/jquery.mobile-1.3.0.min.css">
+	<script src="js/jquery-1.9.1.min.js"></script>
+	<script src="js/jquery.mobile-1.3.0.min.js"></script>
+	<style>
+	.userform {
+    	padding: .8em 1.2em;
+	}
+	.userform h2 {
+    	color: #ffffff;
+   		margin: 0.3em 0 .8em 0;
+    	padding-bottom: .5em;
+    	border-bottom: 1px solid rgba(0,0,0,.1);
+	}
+	.userform label {
+    	display: block;
+    	margin-top: 1.2em;
+	}
+	.switch .ui-slider-switch {
+    	width: 7.5em !important;
+	}
+	</style>
+	
+ 	<script type="text/javascript">
+
+	
+	function onBodyLoad()
+	{		
+		document.addEventListener("deviceready", onDeviceReady, false);
+	}
+	
+	function onDeviceReady()
+	{
+		cordova.exec(null, null, "SplashScreen", "hide", []);
+		//navigator.notification.alert("Working...")
+	}
+	
+		$("#status").change(function() {
+		    state = $("#status").val();
+		    //$('#togshow').text(state.toString());
+		    //navigator.notification.alert(state.toString());
+		    alert(state.toString());
+		});
+	
+	
+	
+	</script>
+	
+</head>
+<body onLoad="onBodyLoad()">
+
+
+	<div data-role="page" id="homePage" data-theme="a">
+			<div data-role="panel" id="settingsPanel" 
+					data-position="right" data-rel="close"
+					data-theme="a" data-position-fixed="true" data-display="push">
+				<form class="userform">
+            		<h4>PLC Connection Settings</h4>
+            		<label for="ip">IP Address</label>
+            		<input type="text" name="ip" id="ip" value="" data-clear-btn="true" data-mini="true">
+            			<div class="switch">
+                			<label for="status">Status</label>
+                				<select name="status" id="slider" data-role="slider" data-mini="true">
+                    				<option value="off">Disconnect</option>
+                    				<option value="on">Connect</option>
+                				</select>
+            			</div>
+        		</form>
+			</div>
+			
+			
+            <div data-theme="a" data-role="header">
+            	<a href="#home" data-icon="home" data-theme="c" 
+            	data-iconpos="notext" data-transition="slide">Home</a>
+                <h1>SieSmart</h1>
+                <a href="#settingsPanel" data-icon="gear" data-theme="c" >Settings</a> 
+            </div>
+		            
+            
+            <div data-role="content">
+            
+            </div>
+            
+            <div data-theme="a" data-role="footer" data-position="fixed">
+                <div data-role="navbar">
+           		 	<ul>
+                		<li><a href="#" data-icon="alert" class="ui-btn-active">Alarm</a></li>
+                		<li><a href="#" data-icon="bars">Trend</a></li>
+                		<li><a href="#" data-icon="grid">Plant</a></li>
+            		</ul>
+        		</div>
+            </div>
+        </div>
+      
+      
+      
+     <div data-role="page" id="home" data-add-back-btn="true">
+     		<div data-role="header">
+     			<h3>
+     				Home
+     			</h3>
+     			
+     		</div>
+     		<div data-role="content">
+     		</div>
+     		<div data-role="footer" data-position="fixed">
+     		<span class="ui-title"></span>
+     		</div>
+     </div> 
+     
+</body>
+</html>
