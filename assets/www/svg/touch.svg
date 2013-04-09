@@ -8,7 +8,7 @@
 		ontouchstart="touchStart(event);" ontouchmove="touchMove(event);" ontouchend="touchEnd(event);"
 		ongesturestart="gestureStart(event);" ongesturechange="gestureChange(event);" ongestureend="gestureEnd(event);" />
 		
-<!--
+
 	<script type="text/javascript">
 		var x;
 		var y;
@@ -26,7 +26,7 @@
 		
 		function touchStart(event) {
 			event.preventDefault();
-
+alert("touchStart");
 			if(!handlingGesture) {
 				// one finger touch => start drag	
 				if(event.touches.length == 1) {
@@ -44,7 +44,7 @@
 		
 		function touchMove(event){ 
 			event.preventDefault();
-			
+			alert("touchMove");
 			if(!handlingGesture) {
 				// one finger touch => drag
 				if(event.touches.length == 1) {
@@ -70,6 +70,7 @@
 		}
 		
 		function touchEnd(event) {
+		alert("touchEnd");
 			if(event.touches.length == 0) {
 				handlingGesture = false;
 			}
@@ -128,5 +129,5 @@
 			node.setAttributeNS(null, 'transform', 'rotate('+ rotation +' '+ x +' '+ y +')');
 		}
 	</script>
-	 -->
+	 
 </svg>

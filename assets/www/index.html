@@ -93,9 +93,9 @@
 
 
 		<div data-role="content">
-
-			<embed id="svgTouch" src="svg/touch.svg" type="image/svg+xml">
-			<button onclick="initSVG()"></button>
+           <div id="svgTouchDiv">
+			<embed id="svgTouch" src="svg/touch.svg" type="image/svg+xml" >
+			</div>
 		</div>
 	</div>
 
@@ -115,7 +115,7 @@
 
 		<div data-role="content">
 			<div id="svgContainer">
-				<object id="svgElement" data="svg/powerplant.svg" type="image/svg+xml">
+				<embed id="svgElement" src="svg/powerplant.svg" type="image/svg+xml">
 			</div>
 		</div>
 	</div>
@@ -125,19 +125,32 @@
 
 </body>
 <script>
+
 	var a = document.getElementById("svgTouch");
 
-	//should happen in svg load eventlistener
-	function initSVG() {
-
-		var svgDoc = document.getElementById("svgTouch").getSVGDocument();
-		var svgElement = svgDoc.getElementById("square");
-		svgElement.setAttributeNS(null, 'width', 300);
-		svgElement.addEventListener("mousedown", function() {
-			$(svgElement).fadeOut();
-			$(svgContainer).append('<p>Hello</p>');
-		}, false);
-
+	a.addEventListener("load",function()
+	{
+	   var svgDoc = a.getSVGDocument();
+	   var svgElement = svgDoc.getElementById("square");
+	   //svgElement.setAttributeNS(null, 'width', 300);
+	   //svgElement.addEventListener("mousedown", function() {
+       //     $(svgElement).fadeOut();
+       //     showSVG("svgTouchDiv","svg/gears.svg")
+       // }, false);
+	    //
+	},false);
+	
+	
+	function showSVG(id, svg) {
+	    var element = document.getElementById(id);
+	         if (!element.getElementsByTagName("object").length) {
+	             var object = document.createElement("object");
+	             object.type = "image/svg+xml";
+	             object.data = svg;
+	             $(element).empty();
+	             element.appendChild(object);
+	        }
+	        element.style.display = "block";
 	}
 </script>
 </html>
