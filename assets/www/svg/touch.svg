@@ -4,12 +4,12 @@
 <svg xmlns="http://www.w3.org/2000/svg" version="1.1">
 
 	<rect id="square" width="200" height="200" style="fill:#3399CC" x="20" y="20" transform="rotate(0 110 110)"
-	
+
 		ontouchstart="touchStart(event);" ontouchmove="touchMove(event);" ontouchend="touchEnd(event);"
 		ongesturestart="gestureStart(event);" ongesturechange="gestureChange(event);" ongestureend="gestureEnd(event);" />
 		
-
-	<script type="text/ecmascript">
+<!--
+	<script type="text/javascript">
 		var x;
 		var y;
 		var touchX;
@@ -18,6 +18,11 @@
 		var height;
 		var rotation = 0;
 		var handlingGesture = false;
+		
+		
+		function clickEvent(event){
+			alert("Clicked");
+		}
 		
 		function touchStart(event) {
 			event.preventDefault();
@@ -123,4 +128,5 @@
 			node.setAttributeNS(null, 'transform', 'rotate('+ rotation +' '+ x +' '+ y +')');
 		}
 	</script>
+	 -->
 </svg>

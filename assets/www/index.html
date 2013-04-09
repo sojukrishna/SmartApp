@@ -2,178 +2,142 @@
 <html>
 <head>
 <meta name="viewport"
-    content="width=device-width, initial-scale=1.0, maximum-scale=1.0;" />
+	content="width=device-width, initial-scale=1.0, maximum-scale=1.0;" />
 <meta charset="utf-8">
 <script type="text/javascript" charset="utf-8" src="cordova-2.5.0.js"></script>
 <link rel="stylesheet" href="css/jquery.mobile-1.3.0.min.css">
 <script src="js/jquery-1.9.1.min.js"></script>
 <script src="js/jquery.mobile-1.3.0.min.js"></script>
 <style>
-.userform {
-    padding: .8em 1.2em;
+#svgElement {
+	height: 100%;
+	width: 100%;
 }
 
-.userform h2 {
-    color: #ffffff;
-    margin: 0.3em 0 .8em 0;
-    padding-bottom: .5em;
-    border-bottom: 1px solid rgba(0, 0, 0, .1);
+#plantIcon {
+	height: 50%;
+	width: 100%;
 }
-
-.userform label {
-    display: block;
-    margin-top: 1.2em;
-}
-
-.switch .ui-slider-switch {
-    width: 7.5em !important;
-}
-#svgElement
-{
-    height:100%;
-    width:100%;
-}
-#plantIcon
-{
-    height:50%;
-    width:100%;
-}
-
 </style>
 
 <script type="text/javascript">
-    function onBodyLoad() {
-        document.addEventListener("deviceready", onDeviceReady, false);
-    }
+	function onBodyLoad() {
+		document.addEventListener("deviceready", onDeviceReady, false);
+	}
 
-    function onDeviceReady() {
-        cordova.exec(null, null, "SplashScreen", "hide", []);
-        //navigator.notification.alert("Working...")
-        //checkConnection();
-    }
+	function onDeviceReady() {
+		cordova.exec(null, null, "SplashScreen", "hide", []);
+		//navigator.notification.alert("Working...")
+		//checkConnection();
+	}
 
-    function checkConnection() {
-        var networkState = navigator.connection.type;
+	function checkConnection() {
+		var networkState = navigator.connection.type;
 
-        var states = {};
-        states[Connection.UNKNOWN] = 'Unknown connection';
-        states[Connection.ETHERNET] = 'Ethernet connection';
-        states[Connection.WIFI] = 'WiFi connection';
-        states[Connection.CELL_2G] = 'Cell 2G connection';
-        states[Connection.CELL_3G] = 'Cell 3G connection';
-        states[Connection.CELL_4G] = 'Cell 4G connection';
-        states[Connection.NONE] = 'No network connection';
+		var states = {};
+		states[Connection.UNKNOWN] = 'Unknown connection';
+		states[Connection.ETHERNET] = 'Ethernet connection';
+		states[Connection.WIFI] = 'WiFi connection';
+		states[Connection.CELL_2G] = 'Cell 2G connection';
+		states[Connection.CELL_3G] = 'Cell 3G connection';
+		states[Connection.CELL_4G] = 'Cell 4G connection';
+		states[Connection.NONE] = 'No network connection';
 
-        alert('Connection type: ' + states[networkState]);
-    }
+		alert('Connection type: ' + states[networkState]);
+	}
 </script>
 </head>
 <body onLoad="onBodyLoad()">
 
-    <!-- Home Page Implementation -->
-    <div data-role="page" id="home" data-theme="a">
-        <div data-role="header">
-            <h3>Home - SieSmart</h3>
-        </div>
-        <div data-role="content">
-            <!-- one grid-2 row -->
-            <div class="ui-grid-solo">
-                <div class="ui-block-a">
-                    <a href="#plantView" data-theme="d" data-role="button"
-                        data-transition="slide" data-icon="gear" data-iconpos="bottom">
-                        
-                        <p>Plant View</p> 
-                        <!-- <img id=plantIcon src="svg/powerplanticon.svg" type="image/svg+xml"> -->
-                        </a>
-                </div>
-            </div>
-            <div class="ui-grid-a">
-                <div class="ui-block-a">
+	<!-- Home Page Implementation -->
+	<div data-role="page" id="home" data-theme="a">
+		<div data-role="header">
+			<h3>Home - SieSmart</h3>
+		</div>
+		<div data-role="content">
+			<!-- one grid-2 row -->
+			<div class="ui-grid-solo">
+				<div class="ui-block-a">
+					<a href="#plantView" data-theme="d" data-role="button"
+						data-transition="pop" data-icon="gear" data-iconpos="bottom">
 
-                    <button type="button" data-theme="d" data-iconpos="bottom"
-                        data-icon="alert" disabled="">Alarm</button>
-                </div>
-                <div class="ui-block-b">
-                    <button type="button" data-theme="d" data-iconpos="bottom"
-                        data-icon="bars" disabled="">Trend</button>
-                </div>
-            </div>
-        </div>
-    </div>
+						<p>Plant View</p> <!-- <img id=plantIcon src="svg/powerplanticon.svg" type="image/svg+xml"> -->
+					</a> <a href="#touchTest" data-theme="d" data-role="button"
+						data-transition="pop" data-icon="gear" data-iconpos="bottom">
+						Touch Test <!-- <img id=plantIcon src="svg/powerplanticon.svg" type="image/svg+xml"> -->
+					</a>
+				</div>
+			</div>
+			<div class="ui-grid-a">
+				<div class="ui-block-a">
 
-<!-- Test page for touch events -->
-<div data-role="page" id="touchTest">
-<div data-theme="a" data-role="header">
-            <a href="#home" data-icon="home" data-theme="c" data-iconpos="notext"
-                data-transition="slide">Home</a>
-            <h1>Touch Test</h1>
-        </div>
+					<button type="button" data-theme="d" data-iconpos="bottom"
+						data-icon="alert" disabled="">Alarm</button>
+				</div>
+				<div class="ui-block-b">
+					<button type="button" data-theme="d" data-iconpos="bottom"
+						data-icon="bars" disabled="">Trend</button>
+				</div>
+			</div>
+		</div>
+	</div>
 
 
-        <div data-role="content">
-
-             <embed src="svg/touch.svg" type="image/svg+xml"> 
-      
-        </div>
-</div>
-
-
-
-    <!-- Plant View Page Implementation -->
-    <!-- To be changed later to a separate html page -->
-
-    <div data-role="page" id="plantView" data-theme="a">
-        <div data-role="panel" id="navPanel" data-position="right"
-            data-rel="close" data-theme="b" data-position-fixed="true"
-            data-display="push"></div>
-
-        <div data-theme="a" data-role="header">
-            <a href="#home" data-icon="home" data-theme="c" data-iconpos="notext"
-                data-transition="slide">Home</a>
-            <h1>Plant View</h1>
-            <a href="#navPanel" data-icon="gear" data-theme="c">Info</a>
-        </div>
+	<!-- Test page for touch events -->
+	<div data-role="page" id="touchTest">
+		<div data-theme="a" data-role="header">
+			<a href="index.html" data-icon="home" data-theme="c"
+				data-iconpos="notext" data-transition="pop">Home</a>
+			<h1>Touch Test</h1>
+		</div>
 
 
-        <div data-role="content">
-            <div id="svgContainer">
-             <embed id="svgElement" src="svg/powerplant.svg" type="image/svg+xml"> 
-            </div>
-        </div>
-         <!-- <div data-theme="a" data-role="footer" data-position="fixed" data-fullscreen="true">
-                <div data-role="navbar">
-                    <ul>
-                        <li><a href="#" data-icon="grid" class="ui-btn-active">Plant</a></li>
-                        <li><a href="#" data-icon="alert" >Alarm</a></li>
-                        <li><a href="#" data-icon="bars">Trend</a></li>
-                    </ul>
-                </div>
-            </div> -->
-    </div>
+		<div data-role="content">
+
+			<embed id="svgTouch" src="svg/touch.svg" type="image/svg+xml">
+			<button onclick="initSVG()"></button>
+		</div>
+	</div>
+
+	<!-- Plant View Page Implementation -->
+	<div data-role="page" id="plantView" data-theme="a">
+		<div data-role="panel" id="navPanel" data-position="right"
+			data-rel="close" data-theme="b" data-position-fixed="true"
+			data-display="push"></div>
+
+		<div data-theme="a" data-role="header">
+			<a href="index.html" data-icon="home" data-theme="c"
+				data-iconpos="notext" data-transition="pop">Home</a>
+			<h1>Plant View</h1>
+			<a href="#navPanel" data-icon="gear" data-theme="c">Info</a>
+		</div>
+
+
+		<div data-role="content">
+			<div id="svgContainer">
+				<object id="svgElement" data="svg/powerplant.svg" type="image/svg+xml">
+			</div>
+		</div>
+	</div>
+
 
 
 
 </body>
 <script>
-    $("#slider").change(function() {
-        state = $("#slider").val();
-        //$('#togshow').text(state.toString());
-        //navigator.notification.alert(state.toString());
-        alert(state.toString());
-    });
-    /*   var clicked = false;
+	var a = document.getElementById("svgTouch");
 
-        $('#alarmLink').click(function() {
-            if(clicked === false) {
-                $(this).addClass('ui-disabled');
-                clicked = true;
-                alert('Alarm Button is now disabled');
-            } 
-        });
+	//should happen in svg load eventlistener
+	function initSVG() {
 
-        $('#trendLink,#plantLink').click(function() {
-            $('#alarmLink').removeClass('ui-disabled');
-            clicked = false; 
-        }); */
+		var svgDoc = document.getElementById("svgTouch").getSVGDocument();
+		var svgElement = svgDoc.getElementById("square");
+		svgElement.setAttributeNS(null, 'width', 300);
+		svgElement.addEventListener("mousedown", function() {
+			$(svgElement).fadeOut();
+			$(svgContainer).append('<p>Hello</p>');
+		}, false);
+
+	}
 </script>
 </html>
